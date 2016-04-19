@@ -1,0 +1,23 @@
+{
+  "name": "bamazon_week_11",
+  "version": "1.0.0",
+  "description": "",
+  "main": "BamazonCustomer.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/leslieo23/bamazon_week_11.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/leslieo23/bamazon_week_11/issues"
+  },
+  "homepage": "https://github.com/leslieo23/bamazon_week_11#readme",
+  "dependencies": {
+    "mysql": "^2.10.2",
+    "prompt": "^1.0.0"
+  }
+}
