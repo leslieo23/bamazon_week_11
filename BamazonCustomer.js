@@ -23,11 +23,11 @@ function getInfo(){
     var info = {
         properties: {
             product: {
-                description: 'Please choose a product by entering it\'s line number',
+                description: 'Pick product by product name'
                 required: true
             },
             qty:{
-                description: 'How many would you like to order?',
+                description: 'How many do you need?',
                 required: true
             }
         }
