@@ -14,33 +14,46 @@ connection.query('SELECT * FROM products', function(err, res){
     if (err) throw err;
 	console.log('   Product Price and Quantity List')
  	for (var i = 0; i < res.length; i++) {
- 		console.log(res[i].ProductName +' | PRICE: '+res[i].Price+' | QTY Availaible: '+res[i].StockQuantity);
+ 		console.log(res[i].ProductName + ' | PRICE: '+res[i].Price+' | QUANTITY: '+res[i].StockQuantity);
     }
 });
+function getInfo(){
 
-var product=res.product;
-var quant=res.quant;
+   
+    var info = {
+        properties: {
+            product: {
+                description: 'Please choose a product by entering it\'s line number',
+                required: true
+            },
+            qty:{
+                description: 'How many would you like to order?',
+                required: true
+            }
+        }
+    }; 
+    prompt.start();             
 
-function getInput(){
-	var info={
-		properties:{
-			product:{
-				description:'Choose a product by Product Name'
-			}
-			quant:{
-				description:'How many do you need?'
-			}
-		}
-	}
+ prompt.get(info, function(err,res){
+        
+        var database = 'SELECT StockQuantity FROM products WHERE ProductName = '+ProductName;
+		var productID = res.product;
+        var qty = res.qty;
+        connection.query(database, function(err, res){
+            if (res[0].StockQuantity > qty) {
+
+               
+                console.log('We Have It!')
+                
+
+            } else {
+		 console.log('Insufficient Quantity')
+         
+            };
+        });
+    });
+};
+function updateDatabase(product,qty){
+
 }
-prompt.get(info,function(err,res){
-	var info='SELECT StockQuantity FROM products where ProductName='+ProductName;      
-connection.query(info,function(err,res){
-		if(res[0].Stockquantity>quant){
-			console.log('We have the item!')
-			}else{
-			console.log('we do not have enough')
-		}
 
-	})
-})
